@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals/screens/categories_screen.dart';
+
+import './screens/categories_screen.dart';
+import './screens/category_meals_screen.dart';
+import './screens/meal_detail_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +31,23 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
+      initialRoute: CategoriesScreen.routeName,
+      routes: {
+        CategoriesScreen.routeName: (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      // ignore: missing_return
+      onGenerateRoute: (settings) {
+        //   //dynamic routing
+        //   return MaterialPageRoute(builder: (ctx) => CategoryMealsScreen());
+      },
+      // ignore: missing_return
+      onUnknownRoute: (settings) {
+        //   //show 404 common error page
+        // return MaterialPageRoute(builder: (ctx) => CategoryMealsScreen());
+      },
     );
   }
 }
